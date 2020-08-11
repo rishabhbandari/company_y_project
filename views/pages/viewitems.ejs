@@ -22,7 +22,7 @@
 
 
 <body>
-  <h1>View Your Product Data</h1>
+  <h1>View Your item Data</h1>
   </br>
   <form action="/">
     <button>Home</button>
@@ -31,19 +31,19 @@
   <table>
     <thread>
       <tr>
-        <th>Product Name</th>
-        <th>Product Description</th>
-        <th>Product Price</th>
-        <th>Product Quantity</th>
+        <th>item Name</th>
+        <th>item Description</th>
+        <th>item Price</th>
+        <th>item Quantity</th>
       </tr>
     </thread>
     <tbody>
-      <% products.forEach(function(product){ %>
+      <% items.forEach(function(item){ %>
       <tr>
-        <td><%= product.product_name %></td>
-        <td><%= product.product_description %></td>
-        <td><%= product.product_price %></td>
-        <td><%= product.product_quantity %></td>
+        <td><%= item.item_name %></td>
+        <td><%= item.item_description %></td>
+        <td><%= item.item_price %></td>
+        <td><%= item.item_quantity %></td>
       </tr>
       <% }) %>
     </tbody>

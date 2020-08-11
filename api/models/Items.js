@@ -6,32 +6,37 @@
  */
 
 module.exports = {
-  tableName: 'items_table',
+  tableName: 'item_table',
   attributes: {
+    id: {
+      type: 'number',
+      columnName: 'item_id',
+      required: true
+    },
     item_name: {
       type: 'string',
       columnName: 'item_name',
       required: true
     },
-    item_id: {
-      type: 'number',
-      columnName: 'item_id',
+    item_image: {
+      type: 'string',
+      columnName: 'item_image',
       required: true
     },
-    qoh: {
+    item_description: {
+      type: 'string',
+      columnName: 'item_description',
+      required: true
+    },
+    item_quantity: {
       type: 'number',
-      columnName: 'qoh',
+      columnName: 'item_quantity',
       defaultsTo: 100
     },
-    price: {
+    item_price: {
       type: 'number',
-      columnName: 'price',
-      required: true
-    },
-    description: {
-      type: 'string',
-      columnName: 'description',
-      required: true
+      columnName: 'item_price',
+      defaultsTo: 100
     }
   }
 };

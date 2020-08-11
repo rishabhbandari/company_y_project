@@ -13,9 +13,9 @@ module.exports = {
       columnName: 'order_id',
       required: true
     },
-    product_id: {
+    item_id: {
       type: 'number',
-      columnName: 'product_id',
+      columnName: 'item_id',
       required: true
     },
     user_id: {

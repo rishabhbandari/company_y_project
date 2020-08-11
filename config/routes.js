@@ -8,23 +8,23 @@
 module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
-  'GET /view_products': 'ProductController.getProducts',
-  'GET /add_products': { view: 'pages/addProducts' },
-  'POST /add_products': 'ProductController.addProducts',
-  'GET /delete_products': 'ProductController.getDeleteProducts',
-  'POST /delete_products': 'ProductController.deleteProducts',
-  'GET /update_products': 'ProductController.getUpdateProducts',
-  'POST /update_Products': 'ProductController.updateProducts',
-  'GET /view_products/:product_id': 'ProductController.getViewproductsById',
-  'POST /products_by_id': 'ProductController.getproductsById',
-  'POST /get_status': 'ProductController.getStatusById',
+  'GET /view_items': 'ItemController.getitems',
+  'GET /add_items': { view: 'pages/additems' },
+  'POST /add_items': 'ItemController.additems',
+  'GET /delete_items': 'ItemController.getDeleteitems',
+  'POST /delete_items': 'ItemController.deleteitems',
+  'GET /update_items': 'ItemController.getUpdateitems',
+  'POST /update_items': 'ItemController.updateitems',
+  'GET /view_items/:item_id': 'ItemController.getViewitemsById',
+  'POST /items_by_id': 'ItemController.getitemsById',
+  'POST /get_status': 'ItemController.getStatusById',
   /*
   
 
-  'GET /delete_jobs': 'ProductController.getDeleteJobs',
-  'POST /delete_jobs': 'ProductController.deleteJobs',
-  'GET /update_jobs': 'ProductController.getUpdateJobs',
-  'POST /update_Jobs': 'ProductController.updateJobs',
+  'GET /delete_jobs': 'itemController.getDeleteJobs',
+  'POST /delete_jobs': 'itemController.deleteJobs',
+  'GET /update_jobs': 'itemController.getUpdateJobs',
+  'POST /update_Jobs': 'itemController.updateJobs',
   'POST /job_order' : 'JobOrderController.addJobsOrder',*/
 
 };

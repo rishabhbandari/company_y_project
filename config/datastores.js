@@ -52,11 +52,11 @@ module.exports.datastores = {
     // url: 'mysql://user:password@host:port/database',
 
     adapter: 'sails-mysql',
-    host: 'a5-mysql-server-707.mysql.database.azure.com',
-    user: 'admin707@a5-mysql-server-707',
-    password: 'India@123',
+    host: 'database-1.c2pd6dxxpwce.us-east-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'helloworld',
     port: '3306',
-    database: 'skhatri',
+    database: 'companydb',
     ssl: true
 
   },

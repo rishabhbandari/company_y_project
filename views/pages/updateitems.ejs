@@ -58,7 +58,7 @@
 </style>
 
 <body>
-    <h1>View Your Product Data</h1>
+    <h1>View Your item Data</h1>
     </br>
     <form action="/">
         <button>Home</button>
@@ -67,35 +67,35 @@
     <table>
         <thread>
             <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
+                <th>item ID</th>
+                <th>item Name</th>
                 <th>Quantity</th>
               </tr>
         </thread>
         <tbody>
-            <% products.forEach(function(product){ %>
+            <% items.forEach(function(item){ %>
                 <tr>
-                  <td><%= product.id %></td>
-                  <td><%= product.product_name %></td>
-                  <td><%= product.product_quantity %></td>
+                  <td><%= item.id %></td>
+                  <td><%= item.item_name %></td>
+                  <td><%= item.item_quantity %></td>
                 </tr>
                 <% }) %>
         </tbody>
     </table>
     </br>
     </br>
-    <h3>Enter Product details to Update</h3>
-    <form action="/update_products" method="POST">
+    <h3>Enter item details to Update</h3>
+    <form action="/update_items" method="POST">
         
 
-        <label for="product_id">Product ID</label>
-    <input type="text" id="product_id" name="product_id" placeholder="Enter ID ..">
+        <label for="item_id">item ID</label>
+    <input type="text" id="item_id" name="item_id" placeholder="Enter ID ..">
 
-    <label for="product_name">Product name</label>
-    <input type="text" id="product_name" name="product_name" placeholder="Enter name ..">
+    <label for="item_name">item name</label>
+    <input type="text" id="item_name" name="item_name" placeholder="Enter name ..">
 
-    <label for="product_quantity">Product ID</label>
-    <input type="text" id="product_quantity" name="product_quantity" placeholder="Enter qty ..">
+    <label for="item_quantity">item ID</label>
+    <input type="text" id="item_quantity" name="item_quantity" placeholder="Enter qty ..">
         </br>
         <input type="submit" value="Submit">
 

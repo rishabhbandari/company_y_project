@@ -1,126 +1,126 @@
 
 module.exports = {
-    getProducts: function (req, res) {
-        sails.models.products.find({}).exec((err, products) => {
+    getitems: function (req, res) {
+        sails.models.items.find({}).exec((err, items) => {
             if (err) {
                 throw err;
             }
-            products.length === 0
+            items.length === 0
                 ?
-                res.send({ error: 'products table does not have any records' })
+                res.send({ error: 'items table does not have any records' })
                 :
-                res.view('pages/viewProducts', { products: products });
+                res.view('pages/viewitems', { items: items });
         });
     },
 
-    addProducts: function (req, res) {
-        console.log("Entering add Products")
-        sails.models.products
+    additems: function (req, res) {
+        console.log("Entering add items")
+        sails.models.items
             .find({
-                id: req.body.product_id,
-            }).exec((err, product) => {
+                id: req.body.item_id,
+            }).exec((err, item) => {
                 if (err) {
-                    console.log("Error in fetching job inside addProduct", err);
+                    console.log("Error in fetching job inside additem", err);
                     res.send({
                         error: true,
-                        message: "This Product Id already exist in Database",
+                        message: "This item Id already exist in Database",
                     });
                     throw err;
                 } else {
 
-                    const product = {
-                        id: req.body.product_id,
-                        product_name: req.body.product_name,
-                        product_description: req.body.product_description,
-                        product_quantity: req.body.product_quantity,
-                        product_price: req.body.product_price,
-                        product_image: req.body.product_image
+                    const item = {
+                        id: req.body.item_id,
+                        item_name: req.body.item_name,
+                        item_description: req.body.item_description,
+                        item_quantity: req.body.item_quantity,
+                        item_price: req.body.item_price,
+                        item_image: req.body.item_image
                     };
-                    console.log("Product", product);
-                    sails.models.products.create(product).exec((err) => {
+                    console.log("item", item);
+                    sails.models.items.create(item).exec((err) => {
                         if (err) {
-                            res.json({ error: true, message: "Error in adding product into database" });
+                            res.json({ error: true, message: "Error in adding item into database" });
                         } else {
-                            console.log("Product successfully added to Database");
+                            console.log("item successfully added to Database");
 
-                            res.redirect("/view_products");
+                            res.redirect("/view_items");
                         }
                     });
                 }
             });
     },
-    getDeleteProducts: function (req, res) {
+    getDeleteitems: function (req, res) {
         console.log("trying to delete");
 
-        sails.models.products.find({}).exec((err, products) => {
+        sails.models.items.find({}).exec((err, items) => {
             if (err) {
                 throw err;
             }
-            products.length === 0
+            items.length === 0
                 ?
-                res.send({ error: 'products table does not have any records' })
+                res.send({ error: 'items table does not have any records' })
                 :
-                //res.send(products);
-                res.view('pages/deleteProducts', { products: products });
+                //res.send(items);
+                res.view('pages/deleteitems', { items: items });
         });
     },
-    deleteProducts: function (req, res) {
-        console.log(req.body.product_id);
-        let prod_param = { id: req.body.product_id };
+    deleteitems: function (req, res) {
+        console.log(req.body.item_id);
+        let prod_param = { id: req.body.item_id };
 
-        sails.models.products.destroy(prod_param).exec(err => {
+        sails.models.items.destroy(prod_param).exec(err => {
             if (err) {
-                res.send({ success: false, isError: true, message: 'Error is deleting Job records' });
+                res.send({ success: false, isError: true, message: 'Error in deleting Job records' });
             } else {
-                sails.models.products.find({}).exec((err, products) => {
+                sails.models.items.find({}).exec((err, items) => {
                     if (err) {
                         throw err;
                     }
-                    products.length === 0
+                    items.length === 0
                         ?
-                        res.send({ error: 'products table does not have any records' })
+                        res.send({ error: 'items table does not have any records' })
                         :
-                        //res.send(products);
-                        res.view('pages/deleteProducts', { products: products });
+                        //res.send(items);
+                        res.view('pages/deleteitems', { items: items });
                 });
             }
         });
     },
-    getUpdateProducts: function (req, res) {
+    getUpdateitems: function (req, res) {
 
-        sails.models.products.find({}).exec((err, products) => {
+        sails.models.items.find({}).exec((err, items) => {
             if (err) {
                 throw err;
             }
-            products.length === 0
+            items.length === 0
                 ?
-                res.send({ error: 'products table does not have any records' })
+                res.send({ error: 'items table does not have any records' })
                 :
-                //res.send(products);
-                res.view('pages/updateProducts', { products: products });
+                //res.send(items);
+                res.view('pages/updateitems', { items: items });
         });
     },
-    updateProducts: function (req, res) {
+    updateitems: function (req, res) {
         const prod = {
-            product_quantity: req.body.product_quantity,
+            item_quantity: req.body.item_quantity,
         };
         console.log("Update ----->", req.body);
-        sails.models.products
-            .update({ id: req.body.product_id, product_name: req.body.product_name }, prod)
+        sails.models.items
+            .update({ id: req.body.item_id, item_name: req.body.item_name }, prod)
             .exec((err) => {
                 if (err) {
                     res.send("Prod Name does not exist");
                 } else {
-                    sails.models.products.find({}).exec((err, products) => {
+                    sails.models.items.find({}).exec((err, items) => {
                         if (err) {
                             throw err;
                         }
-                        products.length === 0
+                        items.length === 0
                             ?
-                            res.send({ error: 'products table does not have any records' })
+                            res.send({ error: 'items table does not have any records' })
                             :
-                            //res.send(products);
-                            res.view('pages/updateProducts', { products: products });
+                            //res.send(items);
+                            res.view('pages/updateitems', { items: items });
                     });
                 }
             });
@@ -128,73 +128,73 @@ module.exports = {
     
 
     
-    getViewproductsById: function (req, res) {
-        let prod_param = req.param('product_id');
+    getViewitemsById: function (req, res) {
+        let prod_param = req.param('item_id');
 
-        sails.models.products.find({}).where({ 'id': req.param('product_id'),  }).exec((err, products) => {
+        sails.models.items.find({}).where({ 'id': req.param('item_id'),  }).exec((err, items) => {
             if (err) {
                 throw err;
             }
-            products.length === 0
+            items.length === 0
                 ?
-                res.send({ error: 'products table does not have any records' })
+                res.send({ error: 'items table does not have any records' })
                 :
-                //es.send(products);
-                res.view('pages/viewproducts', { products: products });
+                //es.send(items);
+                res.view('pages/viewitems', { items: items });
         });
     },
 
-    getproductsById: function (req, res) {
+    getitemsById: function (req, res) {
         let prod = {
-            id: req.body.product_id
+            id: req.body.item_id
         };
 
-        sails.models.products.find(prod).exec((err, products) => {
+        sails.models.items.find(prod).exec((err, items) => {
             if (err) {
                 throw err;
             }
-            products.length === 0
+            items.length === 0
                 ?
-                res.send({ error: 'products table does not have any records' })
+                res.send({ error: 'items table does not have any records' })
                 :
-                res.send(products);
+                res.send(items);
         });
     },
     getStatusById: function (req, res) {
         let prod = {
-            id: req.body.product_id,
+            id: req.body.item_id,
         };
         
         var red_qty;
-        sails.models.products.find(prod).exec((err, products) => {
+        sails.models.items.find(prod).exec((err, items) => {
             if (err) {
                 throw err;
             }
-            products.length === 0
+            items.length === 0
                 ?
-                res.send({ error: 'products table does not have any records' })
+                res.send({ error: 'items table does not have any records' })
                 :
 
-                red_qty = (products[0].product_quantity - req.body.order_quantity)
+                red_qty = (items[0].item_quantity - req.body.order_quantity)
                 sails.log(red_qty,"-----------")
                 if (red_qty > 0){
                     
-                    sails.models.products
-                    .update({ id: req.body.product_id },{product_quantity:products[0].product_quantity-req.body.order_quantity})
+                    sails.models.items
+                    .update({ id: req.body.item_id },{item_quantity:items[0].item_quantity-req.body.order_quantity})
                     .exec((err) => {
                         if (err) {
                             sails.log(err)
                             res.send("Prod Name does not exist or the quantity is not available");
                         } else {
-                            sails.log(typeof req.body.order_quantity,req.body.order_quantity,"---2",products[0].product_price)
+                            sails.log(typeof req.body.order_quantity,req.body.order_quantity,"---2",items[0].item_price)
 
                             const iv = {
                                 id: req.body.id  ,
-                                product_id: req.body.product_id,
+                                item_id: req.body.item_id,
                                 user_id: req.body.user_id,
                                 order_quantity: req.body.order_quantity,
                                 order_status: "success",
-                                order_amount: req.body.order_quantity * products[0].product_price
+                                order_amount: req.body.order_quantity * items[0].item_price
                             };
                             // console.log("__job", job);
                             sails.models.invoice.create(iv).exec((err) => {
@@ -202,7 +202,7 @@ module.exports = {
                                     // res.json({ error: true, message: err });
                                     sails.log(err)
                                 } else {
-                                    console.log("___GET products CALLED");
+                                    console.log("___GET items CALLED");
         
                                     res.send("invoice created");
                                 }
@@ -219,7 +219,7 @@ module.exports = {
                 //     if (err) {
                 //         res.send("Prod Name does not exist or the quantity is not available");
                 //         sails.models.invoice
-                //         .update({ id: req.body.product_id, product_name: req.body.product_name }, bad)
+                //         .update({ id: req.body.item_id, item_name: req.body.item_name }, bad)
                 //         .exec((err) => {
                 //             if (err) {
                 //                 res.send("Prod Name does not exist");
@@ -233,12 +233,12 @@ module.exports = {
                 
                         // else {
                         //     sails.models.invoice
-                        //     .update({ id: req.body.product_id, product_name: req.body.product_name }, good)
+                        //     .update({ id: req.body.item_id, item_name: req.body.item_name }, good)
                         //     .exec((err) => {
                         //         if (err) {
                         //             res.send("Prod Name does not exist");
                         //         } else {
-                        //             sails.models.products.find({}).exec((err, products) => {
+                        //             sails.models.items.find({}).exec((err, items) => {
                         //                 if (err) {
                         //                     throw err;
                         //                 }
@@ -249,9 +249,9 @@ module.exports = {
             });
     },
 /*
-    addproducts: function (req, res) {
+    additems: function (req, res) {
         console.log("1", req.body);
-        sails.models.products
+        sails.models.items
             .find({
                 partid: req.body.partid,
             })
@@ -272,13 +272,13 @@ module.exports = {
                         quantity: req.body.quantity,
                     };
                     console.log("__job", job);
-                    sails.models.products.create(job).exec((err) => {
+                    sails.models.items.create(job).exec((err) => {
                         if (err) {
                             res.json({ error: true, message: err });
                         } else {
-                            console.log("___GET products CALLED");
+                            console.log("___GET items CALLED");
 
-                            res.redirect("/view_products");
+                            res.redirect("/view_items");
                         }
                     });
                 }

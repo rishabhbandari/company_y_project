@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<style>
+  input[type=text],
+  select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 8em;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 30%;
+  }
+</style>
+
+<body>
+
+  <h3>Add items</h3>
+
+  <div>
+    <form action="/">
+      <button> Home </button>
+    </form>
+    </br>
+    <form action="/add_items" method="POST">
+      <label for="item_id">item Id</label>
+      <input type="number" id="item_id" name="item_id" placeholder="Enter item Id..">
+
+      <label for="item_name">item Name</label>
+      <input type="text" id="item_name" name="item_name" placeholder="Enter item name">
+
+      <label for="item_description">item Description</label>
+      <input type="text" id="item_description" name="item_description" placeholder="Enter item Description">
+
+      <label for="item_name">item Image</label>
+      <input type="text" id="item_image" name="item_image" placeholder="Enter item image">
+    
+
+      <label for="item_quantity">item Quantity</label>
+      <input type="number" id="item_quantity" name="item_quantity" placeholder="Enter Quantity..">
+      <label for="item_price"> item Price</label>
+      <input type="number" id="item_price" name="item_price" placeholder="Enter Price..">
+      </br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/view_items">
+      <button> View items</button>
+    </form>
+  </div>
+
+</body>
+
+</html>
