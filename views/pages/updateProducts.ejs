@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    input[type=text],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 50%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 8em;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width: 30%;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th {
+        background-color: #4caf50;
+        color: white;
+    }
+</style>
+
+<body>
+    <h1>View Your Product Data</h1>
+    </br>
+    <form action="/">
+        <button>Home</button>
+    </form>
+    </br>
+    <table>
+        <thread>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+              </tr>
+        </thread>
+        <tbody>
+            <% products.forEach(function(product){ %>
+                <tr>
+                  <td><%= product.id %></td>
+                  <td><%= product.product_name %></td>
+                  <td><%= product.product_quantity %></td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+    </br>
+    </br>
+    <h3>Enter Product details to Update</h3>
+    <form action="/update_products" method="POST">
+        
+
+        <label for="product_id">Product ID</label>
+    <input type="text" id="product_id" name="product_id" placeholder="Enter ID ..">
+
+    <label for="product_name">Product name</label>
+    <input type="text" id="product_name" name="product_name" placeholder="Enter name ..">
+
+    <label for="product_quantity">Product ID</label>
+    <input type="text" id="product_quantity" name="product_quantity" placeholder="Enter qty ..">
+        </br>
+        <input type="submit" value="Submit">
+
+    </form>
+</body>
+
+</html>

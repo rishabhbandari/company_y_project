@@ -1,0 +1,58 @@
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  th {
+    background-color: #4caf50;
+    color: white;
+  }
+</style>
+
+<body>
+  <h1>View Your Product Data</h1>
+  </br>
+  <form action="/">
+    <button>Home</button>
+  </form>
+  </br>
+  <table>
+    <thread>
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+      </tr>
+    </thread>
+    <tbody>
+      <% products.forEach(function(product){ %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.product_name %></td>
+        <td><%= product.product_quantity %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  </br>
+  </br>
+  <h3>Enter Product ID to delete</h3>
+  <form action="/delete_products" method="POST">
+    <label for="product_id">Product ID</label>
+    <input type="text" id="product_id" name="product_id" placeholder="Enter ID ..">
+    </br>
+    </br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
